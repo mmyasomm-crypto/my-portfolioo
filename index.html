@@ -79,6 +79,7 @@
         .hero-text p { font-size: 1.1rem; color: #cbd5e1; margin-bottom: 40px; }
         
         .hero-cta { display: flex; justify-content: center; gap: 20px; }
+
         .btn { padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.3s ease; }
         .btn-filled { background-color: var(--accent-cyan); color: #000; }
         .btn-filled:hover { background-color: #22d3ee; transform: translateY(-3px); }
@@ -90,15 +91,29 @@
         .section-title h2 { font-size: 2.2rem; font-weight: 700; }
         .underline { width: 60px; height: 4px; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald)); margin: 10px auto 0 auto; border-radius: 2px; }
 
+        /* قسم "عني" والإنجازات (About & Stats) */
+        .about-section { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: center; }
+        .about-desc p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 15px; }
+        .stats-box { display: flex; gap: 20px; }
+        .stat-item { background-color: var(--bg-card); padding: 25px; border-radius: 12px; text-align: center; flex: 1; border: 1px solid rgba(255, 255, 255, 0.03); }
+        .stat-item h3 { font-size: 2.2rem; color: var(--accent-emerald); margin-bottom: 5px; }
+        .stat-item p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* قسم المهارات (Skills) */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .skill-card { background-color: var(--bg-card); padding: 25px 15px; border-radius: 12px; text-align: center; transition: 0.3s; border: 1px solid rgba(255, 255, 255, 0.03); }
+        .skill-card i { font-size: 2.8rem; margin-bottom: 12px; color: var(--accent-cyan); display: block; }
+        .skill-card h3 { font-size: 1.1rem; font-weight: 600; }
+        .skill-card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); }
+
         /* معرض الأعمال المطور (Featured Projects) */
         .projects-container { max-width: 1050px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; padding: 0 20px; }
         .project-card { background-color: var(--bg-card); border-radius: 16px; overflow: hidden; display: grid; grid-template-columns: 1.1fr 0.9fr; border: 1px solid rgba(255, 255, 255, 0.03); transition: 0.3s ease; }
         .project-card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); }
         .project-img { height: 100%; min-height: 320px; overflow: hidden; position: relative; background-color: #1e293b; }
-        
-        /* تأثير عرض سكرين شوت حقيقي للموقع */
         .project-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: 0.5s ease; }
-        .project-card:hover .project-img img { object-position: bottom; /* يخلي السكرين شوت تتحرك لتحت كأن العميل بيعمل سكرول في الموقع */ }
+        .project-card:hover .project-img img { object-position: bottom; }
         
         .project-info { padding: 35px; display: flex; flex-direction: column; justify-content: center; }
         .proj-tag { background-color: rgba(6, 182, 212, 0.1); color: var(--accent-cyan); font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; width: max-content; margin-bottom: 12px; }
@@ -112,8 +127,6 @@
         .review-card { background-color: var(--bg-card); padding: 35px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.03); display: flex; flex-direction: column; justify-content: space-between; position: relative; }
         .stars { color: #fbbf24; margin-bottom: 15px; font-size: 1rem; }
         .review-text { color: #cbd5e1; font-style: italic; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.7; }
-        
-        /* بروفايل العميل الحقيقي */
         .client-profile { display: flex; align-items: center; gap: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 15px; }
         .client-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-cyan); }
         .client-details h4 { font-size: 1.05rem; color: var(--text-main); font-weight: 600; }
@@ -134,8 +147,9 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .hero-text h1 { font-size: 2.3rem; }
-            .project-card { grid-template-columns: 1fr; }
+            .about-grid, .project-card { grid-template-columns: 1fr; }
             .project-img { height: 220px; }
+            .stats-box { flex-direction: column; }
         }
     </style>
 </head>
@@ -145,6 +159,8 @@
         <div class="logo">Yassin<span>.dev</span></div>
         <ul class="nav-links">
             <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#testimonials">Reviews</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -165,6 +181,44 @@
             </div>
         </div>
     </header>
+
+    <section id="about" class="about-section">
+        <div class="section-title">
+            <h2>About Me</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-desc">
+                <p>I am a highly motivated Frontend Developer based in Cairo, Egypt. I have a passion for transforming complex coding problems into seamless, user-friendly web experiences.</p>
+                <p>With hands-on experience in modern responsive design, I focus on writing clean, maintainable code and solving critical JavaScript bugs that slow down modern web applications.</p>
+            </div>
+            <div class="stats-box">
+                <div class="stat-item">
+                    <h3>2+</h3>
+                    <p>Live Projects</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Client Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-title">
+            <h2>Core Skills</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card"><i class="fab fa-html5"></i> <h3>HTML5</h3></div>
+            <div class="skill-card"><i class="fab fa-css3-alt"></i> <h3>CSS3</h3></div>
+            <div class="skill-card"><i class="fab fa-js-square"></i> <h3>JavaScript (ES6+)</h3></div>
+            <div class="skill-card"><i class="fab fa-bootstrap"></i> <h3>Bootstrap</h3></div>
+            <div class="skill-card"><i class="fas fa-mobile-alt"></i> <h3>Responsive Design</h3></div>
+            <div class="skill-card"><i class="fas fa-bug"></i> <h3>Bug Fixing</h3></div>
+        </div>
+    </section>
 
     <section id="projects">
         <div class="section-title">
